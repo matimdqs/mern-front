@@ -14,6 +14,9 @@ export default function LaunchDetails() {
     }, []);
 
     return(
-        <h2>Launch Details {flight_number}</h2>
+        <div>
+            <h2>Launch Details {flight_number}</h2>
+            <h3>Mission Name {launchDetails.mission_name}</h3>
+        </div>
     );
 }
