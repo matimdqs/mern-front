@@ -14,13 +14,23 @@ const LaunchCard = ({ launch }) => {
     }
 
     return(
-        <div className="card">
-            <img src={launch.mission_patch} alt="" /> {launch.mission_name}
-            <hr />
-            <a href={`/launch/${launch.flight_number}`} target="_blank">See More</a>
-            <form onSubmit={handleSubmit}>
-                <button type="submit">Save</button>
-            </form>
+        <div class="group relative">
+          <div class="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
+            <img src={launch.mission_patch} class="h-full w-full object-cover object-center" />
+          </div>
+          <h3 class="mt-6 text-sm text-gray-500">
+            <a href={`/launch/${launch.flight_number}`} target="_blank">
+              <span class="absolute inset-0"></span>
+              {launch.mission_name}
+            </a>
+          </h3>
+          <form onSubmit={handleSubmit}>
+            <button
+            type="submit"
+            class="inline-block rounded bg-primary px-4 pb-[5px] pt-[6px] text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">
+            Save
+            </button>
+          </form>
         </div>
     );
 }

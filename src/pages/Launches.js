@@ -48,16 +48,18 @@ export default function Launches() {
   const paginate = pageNumber => setCurrentPage(pageNumber);
 
   return (
-    <div>
-      <SectionTitle />
-      <Nav allLaunches={allLaunches} filterFavLaunches={filterFavLaunches} />
-      <Search onChange={searchLaunches} />
-      <LaunchGrid launches={currentLaunches} />        
-      <Pagination
-        launchesPerPage={launchesPerPage}
-        totalLaunches={launches?.length}
-        paginate={paginate}
-      />
+    <div class="bg-white py-24 sm:py-32">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8"> 
+        <SectionTitle />
+        <Nav allLaunches={allLaunches} filterFavLaunches={filterFavLaunches} />
+        <Search onChange={searchLaunches} />
+        <LaunchGrid launches={currentLaunches} />        
+        <Pagination
+          launchesPerPage={launchesPerPage}
+          totalLaunches={launches?.length}
+          paginate={paginate}
+        />
+      </div>
     </div>
   );
 };
