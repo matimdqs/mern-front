@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Pagination from "./../components/Pagination";
 import Search from "./../components/Search";
-import Nav from "./../components/Nav";
-import Title from "./../components/Title";
 import LaunchGrid from "./../components/LaunchGrid";
 
 export default function Launches() {
@@ -10,6 +8,7 @@ export default function Launches() {
   const [launches, setLaunches] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [launchesPerPage] = useState(6);
+  const [filterFavs, setFilterFavs] = useState(false);
 
   useEffect(() => {
     fetch("http://localhost:5000/api/v1/launches")
@@ -20,11 +19,24 @@ export default function Launches() {
       });
   }, []);
 
-  // search launches
-  const handleSearchInput = event => {
+  const allLaunches = () => {
+    setFilterFavs(false);
+    setLaunches(apiLaunches);
+  }
+
+  const filterFavLaunches = () => {
+    setFilterFavs(true);
     let updatedLaunches = apiLaunches.filter((launch) => {
-        return launch.mission_name.toLowerCase().includes(event.target.value);
+      return launch.favorite === true;
     });
+    setLaunches(updatedLaunches);
+  };
+
+  const searchLaunches = event => {
+    let updatedLaunches = apiLaunches.filter((launch) =>
+        launch.favorite == filterFavs &&
+        launch.mission_name.toLowerCase().includes(event.target.value)
+    );
     setLaunches(updatedLaunches);
   };
 
@@ -35,9 +47,20 @@ export default function Launches() {
 
   return (
     <div>
-        <Title></Title>
-        <Nav></Nav>
-        <Search onChange={handleSearchInput} />
+        <div className="title"></div>
+
+        <div className="menu">
+          <ul>
+            <li onClick={() => allLaunches()}>
+              ALL
+            </li>
+            <li onClick={() => filterFavLaunches()}>
+              FAVOURITES
+            </li>            
+          </ul>
+        </div>
+        
+        <Search onChange={searchLaunches} />
         <LaunchGrid launches={currentLaunches} />        
         <Pagination
             launchesPerPage={launchesPerPage}
