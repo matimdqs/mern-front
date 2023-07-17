@@ -7,7 +7,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Launches />}></Route>
-        <Route path="/launch/:id" element={<LaunchDetails />} exact></Route>
+        <Route path="/launch/:flight_number" element={<LaunchDetails />} exact></Route>
       </Routes>
     </BrowserRouter>
   );
