@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Pagination from "./../components/Pagination";
+import SectionTitle from "./../components/SectionTitle";
+import Nav from "./../components/Nav";
 import Search from "./../components/Search";
+import Pagination from "./../components/Pagination";
 import LaunchGrid from "./../components/LaunchGrid";
 
 export default function Launches() {
@@ -47,26 +49,15 @@ export default function Launches() {
 
   return (
     <div>
-        <div className="title"></div>
-
-        <div className="menu">
-          <ul>
-            <li onClick={() => allLaunches()}>
-              ALL
-            </li>
-            <li onClick={() => filterFavLaunches()}>
-              FAVOURITES
-            </li>            
-          </ul>
-        </div>
-        
-        <Search onChange={searchLaunches} />
-        <LaunchGrid launches={currentLaunches} />        
-        <Pagination
-            launchesPerPage={launchesPerPage}
-            totalLaunches={launches?.length}
-            paginate={paginate}
-        />
+      <SectionTitle />
+      <Nav allLaunches={allLaunches} filterFavLaunches={filterFavLaunches} />
+      <Search onChange={searchLaunches} />
+      <LaunchGrid launches={currentLaunches} />        
+      <Pagination
+        launchesPerPage={launchesPerPage}
+        totalLaunches={launches?.length}
+        paginate={paginate}
+      />
     </div>
   );
 };
