@@ -13,7 +13,7 @@ const LaunchCard = ({ launch }) => {
     }
 
     return(
-        <div class="mb-6">
+        <div class="pb-8">
           <div class="group relative">
             <div class="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
               <img src={launch.mission_patch} class="h-full w-full object-cover object-center" />
