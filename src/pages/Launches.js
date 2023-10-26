@@ -34,6 +34,8 @@ export default function Launches() {
     setLaunches(updatedLaunches);
   };
 
+  // const updatedLaunches = apiLaunches.filter(({favorite}) => favorite); 
+
   const searchLaunches = event => {
     let updatedLaunches = apiLaunches.filter((launch) =>
         launch.favorite == filterFavs &&
