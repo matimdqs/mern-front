@@ -1,3 +1,10 @@
+This is a MERN stack webapp that extract launches from SpaceX deprecated API. I coded it for playing purposes only.
+
+Matias - matiasvelillamdq@gmail.com
+
+---
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -21,27 +21,36 @@ export default function Launches() {
       });
   }, []);
 
-  const allLaunches = () => {
-    setFilterFavs(false);
-    setLaunches(apiLaunches);
-  }
-
-  const filterFavLaunches = () => {
-    setFilterFavs(true);
-    let updatedLaunches = apiLaunches.filter((launch) => {
-      return launch.favorite === true;
-    });
+  const setLaunchesByFilter = (launches, filterFavs, searchTerm = "") => {
+    let updatedLaunches;
+  
+    if (filterFavs) {
+      updatedLaunches = launches.filter((launch) => launch.favorite === true);
+    } else {
+      updatedLaunches = launches;
+    }
+  
+    if (searchTerm !== "") {
+      updatedLaunches = updatedLaunches.filter((launch) =>
+        launch.mission_name.toLowerCase().includes(searchTerm)
+      );
+    }
+  
     setLaunches(updatedLaunches);
   };
-
-  // const updatedLaunches = apiLaunches.filter(({favorite}) => favorite); 
-
-  const searchLaunches = event => {
-    let updatedLaunches = apiLaunches.filter((launch) =>
-        launch.favorite == filterFavs &&
-        launch.mission_name.toLowerCase().includes(event.target.value)
-    );
-    setLaunches(updatedLaunches);
+  
+  const allLaunches = () => {
+    setFilterFavs(false);
+    setLaunchesByFilter(apiLaunches, false);
+  };
+  
+  const filterFavLaunches = () => {
+    setFilterFavs(true);
+    setLaunchesByFilter(apiLaunches, true);
+  };
+  
+  const searchLaunches = (event) => {
+    setLaunchesByFilter(apiLaunches, filterFavs, event.target.value.toLowerCase());
   };
 
   const indexOfLastLaunch = currentPage * launchesPerPage;
