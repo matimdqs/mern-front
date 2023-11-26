@@ -1,4 +1,4 @@
-This is a MERN stack webapp that extract launches from SpaceX deprecated API. I coded it for playing purposes only.
+This is a MERN stack webapp that extract launches from SpaceX deprecated API. I coded it for example purposes only.
 
 Matias - matiasvelillamdq@gmail.com
 
